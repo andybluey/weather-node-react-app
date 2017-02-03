@@ -9,6 +9,12 @@ It should display the temp and time for certain cities.
 Clone the git repository, cd into the weather-app and run...
 *npm install*
 
+You will need to create a file called secrets.json in the main directory and insert your API key into this file like below:
+
+{
+  "key": "yourkeyhere"
+}
+
 Before running start, make sure the server is running:
 *npm run server*
 

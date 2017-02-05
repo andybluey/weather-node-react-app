@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Grid, Navbar, Jumbotron, Button } from 'react-bootstrap';
-import queryApi from './queryApi';
+import queryApi from '../utilities/queryApi';
+import Chart from './Chart';
+import MainContainer from './MainContainer';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
-      hours: [],
-      hourlyTemps: [],
+      loadData: [],
       error: null
     };
   }
@@ -17,23 +17,19 @@ class App extends Component {
   }
 
   onSuccessfulLoad = (data) => {
-    console.log('load succeeded');
     const collectData = data && data.hourly.data;
-    const hours = [];
-    const hourlyTemps = [];
+    const loadData = [];
     for (const getData of collectData) {
-      hours.push(new Date(getData.time*1000).toLocaleString());
-      hourlyTemps.push((getData.temperature-32)*5/9);
+      loadData.push([new Date(getData.time*1000).toJSON(), ((getData.temperature-32)*5/9)])
     }
+
     this.setState({
-      hours,
-      hourlyTemps,
+      loadData,
       error: null,
     });
   }
 
   onFailureToLoad = (error) => {
-    console.log('load failed');
     this.setState({
       error
     });
@@ -48,15 +44,17 @@ class App extends Component {
   }
 
   render() {
-    const hourlyTemps = this.state.hourlyTemps || 'hourly temperatures';
     return (
-      <div className="App">
-        <h1>Weather for Sydney</h1>
-        <h2>Time</h2>
-        <p>{this.state.hours}</p>
-        <h2>Temp</h2>
-        <p>{hourlyTemps}</p>
-      </div>
+      <MainContainer>
+        <div className='app'>
+          <h1 className='title'>Weather for Sydney</h1>
+          <p className='lead'>Showing the temperature of the city over the next 48 hours</p>
+          <hr/>
+          <Chart
+            loadData={this.state.loadData}
+          />
+        </div>
+      </MainContainer>
     );
   }
 }

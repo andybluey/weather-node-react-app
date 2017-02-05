@@ -30,7 +30,7 @@ The page will reload when these servers are running if you make edits.
 ## Todo:
 - Enable multiple locations to be selected
 - Design a front page for the data
-- Implement D3 to display the data.
+- Enhance the charts features (interactive) and presentation (responsive on updates)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).

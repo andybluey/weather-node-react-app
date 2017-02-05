@@ -7,7 +7,6 @@ export function checkStatus(res) {
     err.res = res;
     throw err;
   }
-  console.log(res);
   return res;
 }
 

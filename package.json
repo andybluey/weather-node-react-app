@@ -2,20 +2,19 @@
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
-
   "proxy": "http://localhost:4000",
-  
   "devDependencies": {
     "react-scripts": "0.8.5"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
     "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
+    "d3": "^4.5.0",
     "es6-promise": "^4.0.5",
     "express": "^4.14.1",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
-    "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.2"
   },
   "scripts": {
